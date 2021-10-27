@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,600&display=swap');
+body{
+    background-image: url('../imagenes/AdobeStock_444432341.jpeg');
+    background-size: cover;
+    font-family: Montserrat;
+}
+#divPrincipal{
+    text-align: center;
+    width: 80%;
+    height: 600px;
+    margin: auto;
+    border: 1px solid blue;
+    position: relative;
+    background-color: white;
+    border-radius: 20px;
+
+}
+.palabra{
+    border: 1px solid red;
+    position: absolute;
+    padding: 5px;
+    color: black;
+    border-radius: 10px;
+}
+.palabra:nth-child(1){
+    top: 100px;
+    left: 300px;
+}
+.palabra:nth-child(2){
+    top: 300px;
+    left: 600px;
+}
+.palabra:nth-child(3){
+    top: 500px;
+    left: 700px;
+}
+.palabra:hover{
+    transition: 0.5s;
+    background-color: greenyellow;
+}
