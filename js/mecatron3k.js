@@ -35,16 +35,21 @@ class Juego {
     let letraPulsada = evento.key;
     console.log(`Has pulsado la letra ${letraPulsada}`);
     let palabras = this.divPrincipal.querySelectorAll(".palabra");
-
+    let puntuacion = 0;
     for (let palabra of palabras) {
-      let span = palabra.children.item(0);
-      let nodoTexto = palabra.childNodes[1];
-      let textoRestante = nodoTexto.nodeValue;
-      let primeraLetraTextoRestante = textoRestante.charAt(0);
+        let span = palabra.children.item(0);
+        let nodoTexto = palabra.childNodes[1];
+        let textoRestante = nodoTexto.nodeValue;
+        let primeraLetraTextoRestante = textoRestante.charAt(0);
+        let suma = 0
 
-      if (letraPulsada == primeraLetraTextoRestante) {
-        span.textContent += letraPulsada;
-        nodoTexto.nodeValue = textoRestante.substring(1)
+        if (letraPulsada == primeraLetraTextoRestante) {
+            span.textContent += letraPulsada;
+            nodoTexto.nodeValue = textoRestante.substring(1)
+            if (nodoTexto.nodeValue.length == 0) {
+            palabra.remove()
+            this.modelo.sumarPunto()
+            }
       }
     }
   }
@@ -59,8 +64,8 @@ class Vista {
     let div = document.createElement("div");
     this.div.appendChild(div);
 
-    let span = document.createElement('span')
-    div.appendChild(span)
+    let span = document.createElement("span");
+    div.appendChild(span);
 
     div.appendChild(document.createTextNode(nuevaPalabra));
     div.classList.add("palabra");
@@ -74,6 +79,10 @@ class Vista {
       let top = parseInt(palabra.style.top);
       top += 3;
       palabra.style.top = `${top}px`;
+
+      if (top > 470){
+          palabra.remove()
+      }
     }
   }
 }
